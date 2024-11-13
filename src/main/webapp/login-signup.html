@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Make sure this file is accessible -->
+    <script defer src="script.js"></script> <!-- Ensure this script is in place -->
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- Sign-up form -->
+        <div class="form-container sign-up-container">
+            <form action="SignupServlet" method="POST"> <!-- Removed enctype -->
+                <h1>Create Account</h1>
+                <input type="text" placeholder="Username" name="username" required />
+                <input type="email" placeholder="Email" name="email" required />
+                <input type="password" placeholder="Password" name="password" required />
+                <br>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Sign-in form -->
+        <div class="form-container sign-in-container">
+            <form action="LoginServlet" method="POST">
+                <h1>Sign in</h1>
+                <input type="text" placeholder="Username" name="username" required />
+                <input type="password" placeholder="Password" name="password" required />
+                <br>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+
+        <!-- Overlay (for transition between sign-up and sign-in forms) -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us, please log in with your personal info</p>
+                    <br>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start your journey with us</p>
+                    <br>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

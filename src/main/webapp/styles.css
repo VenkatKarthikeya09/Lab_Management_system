@@ -1,0 +1,220 @@
+/* Universal reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Modern font */
+    background: linear-gradient(135deg, #6A82FB, #FC5C7D); /* Vibrant background gradient */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: background 0.5s ease; /* Background transition */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better contrast */
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    width: 900px;
+    max-width: 100%;
+    min-height: 600px;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Transition on shadow */
+}
+
+.container:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+    padding: 50px;
+}
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.6s ease-in-out;
+    padding: 50px;
+    background-color: #FFCCBC; /* Light peach background for the Sign-Up form */
+    border-radius: 10px; /* Keep rounded corners for consistency */
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 100;
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* Overlay gradient */
+    position: absolute;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out; /* Added opacity transition */
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent for blending */
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Added transform */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Depth effect */
+}
+
+input {
+    background-color: #e0e7ff; /* Light blue background for inputs */
+    border: none;
+    padding: 15px;
+    margin: 10px 0; /* Updated spacing */
+    width: 100%;
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease, background-color 0.3s ease; /* Added background transition */
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03); /* Slight scale effect on focus */
+    background-color: #cce7ff; /* Darker blue background on focus */
+}
+
+button {
+    border-radius: 20px; /* Rounded corners */
+    border: 1px solid #FF6F61; /* Button border color */
+    background-color: #FF6F61; /* Button background color */
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease; /* Added background transition */
+}
+
+button:hover {
+    transform: translateY(-3px); /* Slightly higher lift on hover */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    background-color: #FF9A3E; /* Change background on hover */
+}
+
+.ghost {
+    background-color: transparent;
+    border-color: #ffffff;
+    border-radius: 20px; /* Rounded corners */
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.ghost:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px; /* Increased font size */
+    margin: 15px 0;
+    transition: color 0.2s ease, text-shadow 0.2s ease; /* Added shadow effect */
+}
+
+a:hover {
+    color: #FF6F61; /* Change color on hover */
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.small-text {
+    color: #555;
+    margin: 5px 0 15px;
+    transition: color 0.2s ease; /* Added color transition */
+}
+
+.container.right-panel-active .small-text {
+    color: #FF6F61; /* Change color on right panel active */
+}
