@@ -1,8 +1,7 @@
-# Lab_Management_system
-Lab Management System
-<br>
-Author - VenkatKarthikeya09
+Author - VenkatKarthikeya09  
 
+# Lab_Management_system
+Lab Management System  
 
 OUTPUT IMAGES:
 ![image](https://github.com/user-attachments/assets/effb3b25-17b5-4a5d-a683-dfee85cab29a)
